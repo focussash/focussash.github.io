@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zijie Jin - Academic Profile</title>
-    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css)" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Zijie Jin - PhD Student | UW</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
-            --primary-color: #4a6fa5;
-            --text-color: #333;
-            --bg-color: #fff;
-            --light-gray: #f5f5f5;
-            --mid-gray: #e0e0e0;
-            --dark-gray: #666;
-            --transition: all 0.3s ease;
+            /* Clean, professional Slate Blue - Definitely not purple */
+            --primary-color: #2c5282; 
+            --secondary-color: #4299e1;
+            --text-color: #2d3748;
+            --text-light: #718096;
+            --bg-color: #ffffff;
+            --light-gray: #f7fafc;
+            --border-color: #e2e8f0;
+            --transition: all 0.2s ease-in-out;
         }
         
         * {
@@ -23,21 +25,23 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
             color: var(--text-color);
             background-color: var(--bg-color);
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1000px; /* Slightly tighter width for readability */
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
         
+        /* Navigation */
         header {
-            background-color: var(--bg-color);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -47,216 +51,257 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 18px 0;
         }
         
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.25rem;
+            font-weight: 700;
             color: var(--primary-color);
+            letter-spacing: -0.5px;
         }
         
         .nav-links {
             display: flex;
             list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 20px;
+            gap: 30px;
         }
         
         .nav-links a {
             text-decoration: none;
             color: var(--text-color);
+            font-size: 0.95rem;
             font-weight: 500;
             transition: var(--transition);
         }
         
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--primary-color);
         }
-        
-        .hamburger {
-            display: none;
-            cursor: pointer;
-        }
-        
-        .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            background-color: var(--text-color);
-            transition: var(--transition);
-        }
-        
-        section {
-            padding: 60px 0;
-            scroll-margin-top: 80px;
-        }
-        
-        h1, h2, h3 {
-            margin-bottom: 20px;
+
+        /* Typography */
+        h1, h2, h3, h4 {
             color: var(--text-color);
-        }
-        
-        h1 {
-            font-size: 2.5rem;
+            line-height: 1.2;
         }
         
         h2 {
-            font-size: 2rem;
-            border-bottom: 2px solid var(--primary-color);
+            font-size: 1.75rem;
+            margin-bottom: 30px;
             padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
             display: inline-block;
         }
         
         h3 {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
             color: var(--primary-color);
         }
-        
-        p {
-            margin-bottom: 20px;
+
+        section {
+            padding: 70px 0;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 40px;
+            align-items: start;
         }
         
-        .about-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            align-items: flex-start;
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #4a5568;
         }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
+
+        .profile-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
         }
-        
-        .about-image {
-            flex: 0 0 250px;
-            height: 300px;
-            background-color: var(--light-gray);
+
+        .profile-placeholder {
+            width: 150px;
+            height: 150px;
+            background-color: #cbd5e0;
+            border-radius: 50%;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 20px;
-            border-radius: 5px;
+            color: #718096;
+            font-size: 0.8rem;
         }
-        
-        .publication-item {
+
+        /* Education List */
+        .edu-item {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .edu-school { font-weight: 600; }
+        .edu-degree { color: var(--text-light); font-size: 0.9rem; }
+        .edu-year { color: var(--text-light); font-size: 0.9rem; text-align: right;}
+
+        /* Publications */
+        .pub-item {
             margin-bottom: 20px;
-            padding: 15px;
-            background-color: var(--light-gray);
-            border-radius: 5px;
+            padding-left: 15px;
+            border-left: 3px solid var(--border-color);
             transition: var(--transition);
         }
         
-        .publication-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .pub-item:hover {
+            border-left-color: var(--primary-color);
+        }
+
+        .pub-title {
+            display: block;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 4px;
         }
         
-        .research-image {
-            width: 100%;
-            height: 200px;
-            background-color: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .pub-meta {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Research Cards */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .research-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            transition: var(--transition);
+        }
+
+        .research-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            border-color: var(--primary-color);
+        }
+
+        .role-tag {
+            display: inline-block;
+            background: var(--light-gray);
+            color: var(--text-light);
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .research-card ul {
+            list-style-position: inside;
+            margin-top: 15px;
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+        
+        .research-card li {
+            margin-bottom: 8px;
+        }
+
+        /* Teaching & Awards Lists */
+        .simple-list {
+            list-style: none;
+        }
+        .simple-list li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        .list-header {
+            font-weight: 600;
+            display: block;
+        }
+        .list-sub {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Contact */
+        .contact-section {
             text-align: center;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
+            max-width: 600px;
+            margin: 0 auto;
         }
-        
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
         }
-        
         .social-links a {
-            color: var(--dark-gray);
+            color: var(--text-light);
             font-size: 1.5rem;
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            font-size: 0.9rem;
+            gap: 8px;
         }
-        
+        .social-links i {
+            font-size: 1.5rem;
+        }
         .social-links a:hover {
             color: var(--primary-color);
         }
-        
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: var(--transition);
-            margin-top: 10px;
-        }
-        
-        .btn:hover {
-            background-color: #3a5a8c;
-            transform: translateY(-2px);
-        }
-        
+
+        /* Footer */
         footer {
-            background-color: var(--light-gray);
             text-align: center;
-            padding: 20px 0;
+            padding: 40px 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
             margin-top: 40px;
         }
-        
+
+        /* Mobile */
+        .hamburger { display: none; cursor: pointer; }
+        .bar { display: block; width: 25px; height: 2px; margin: 5px auto; background-color: var(--text-color); }
+
         @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-            
+            .about-grid { grid-template-columns: 1fr; }
+            .hamburger { display: block; }
             .nav-links {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: var(--bg-color);
-                width: 100%;
-                text-align: center;
-                transition: var(--transition);
-                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                position: fixed; left: -100%; top: 70px; flex-direction: column;
+                background-color: #fff; width: 100%; text-align: center;
+                box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); padding-bottom: 20px;
+                gap: 15px;
             }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .nav-links li {
-                margin: 15px 0;
-            }
-            
-            .about-container {
-                flex-direction: column;
-            }
-            
-            .about-image {
-                width: 100%;
-            }
+            .nav-links.active { left: 0; }
         }
     </style>
 </head>
 <body>
+
     <header id="home">
         <div class="container">
             <nav>
                 <div class="logo">Zijie Jin</div>
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#selectedpublications">Selected Publications</a></li>
+                    <li><a href="#about">About</a></li>
                     <li><a href="#research">Research</a></li>
+                    <li><a href="#publications">Publications</a></li>
                     <li><a href="#teaching">Teaching</a></li>
                     <li><a href="#awards">Awards</a></li>
-                    <li><a href="#news">News</a></li>
-                    <li><a href="#cv">CV</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="hamburger">
@@ -270,102 +315,223 @@
 
     <section id="about">
         <div class="container">
-            <h2>About Me</h2>
-            <div class="about-container">
+            <div class="about-grid">
                 <div class="about-text">
-                    <p>I am a chemical (and later biomedical) engineer by training, but am also interested in and tapped into other engineering disciplines. Currently, I'm pursuing a PhD in ECE at University of Washington under the supervision of Dr. Kimberly Ingraham. My research interests include the design and control of exoskeletons and prostheses for rehabilitation and human augmentation. My past research experience includes a Master's in Biomedical Engineering from McGill University, supervised by Drs. David Juncker and Corinne F. Maurice, and research assistant work at Polytechnique Montréal.</p>
+                    <h1>Hi, I'm Zijie Jin.</h1>
+                    <p style="font-size: 1.2rem; color: var(--primary-color); margin-top: 0.5rem;">
+                        PhD Student in Electrical & Computer Engineering
+                    </p>
+                    <p>
+                        I am a researcher at the <strong>University of Washington</strong>, advised by <a href="#" style="color:var(--primary-color)">Dr. Kimberly Ingraham</a>. My work operates at the intersection of engineering and human health, utilizing game theory paradigms to investigate how humans interact and co-adapt with assistive wearable devices.
+                    </p>
+                    <p>
+                        My background spans Chemical, Biological, and Biomedical Engineering. Previously, I worked on microbiome bioreactors at McGill University and exoskeleton dynamics at Polytechnique Montréal. I am driven by the design and control of systems that augment human capability.
+                    </p>
+                    
+                    <h3 style="margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">Education</h3>
+                    <div class="education-list">
+                        <div class="edu-item">
+                            <div>
+                                <div class="edu-school">University of Washington</div>
+                                <div class="edu-degree">PhD, Electrical & Computer Engineering</div>
+                            </div>
+                            <div class="edu-year">2023 - Present</div>
+                        </div>
+                        <div class="edu-item">
+                            <div>
+                                <div class="edu-school">McGill University</div>
+                                <div class="edu-degree">MEng, Biological & Biomedical Engineering</div>
+                            </div>
+                            <div class="edu-year">2019 - 2022</div>
+                        </div>
+                        <div class="edu-item">
+                            <div>
+                                <div class="edu-school">McGill University</div>
+                                <div class="edu-degree">BEng, Chemical Engineering (Minor in Biotechnology)</div>
+                            </div>
+                            <div class="edu-year">2014 - 2018</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="about-image">
-                    [NOTE TO USER: Please insert your professional headshot here.]
+
+                <div class="profile-card">
+                    <div class="profile-placeholder">
+                        <i class="fas fa-user" style="font-size: 3rem;"></i>
+                    </div>
+                    <a href="mailto:zijiejin@uw.edu" style="display: block; color: var(--text-color); text-decoration: none; margin-bottom: 10px;">
+                        <i class="fas fa-envelope"></i> zijiejin@uw.edu
+                    </a>
+                    <a href="CV_Zijie_Jin_2025.pdf" class="btn" style="display: inline-block; padding: 8px 20px; background: var(--primary-color); color: white; border-radius: 5px; text-decoration: none; font-size: 0.9rem; margin-top: 10px;">
+                        Download CV
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="selectedpublications">
-    <div class="container">
-        <h2>Selected Publications</h2>
-        <a href="https://scholar.google.ca/citations?user=6JpY-CEAAAAJ&hl=en" class="btn" target="_blank">Google Scholar Profile</a>
-        <div class="publications-list">
-            <div class="publication-item">
-                <a href="https://www.nature.com/articles/s41586-022-04683-4" target="_blank" rel="noopener noreferrer">
-                    Microfluidic chain reaction of structurally programmed capillary flow events. <em>Nature</em>, 2022.
-                </a>
-            </div>
-            <div class="publication-item">
-                <a href="https://www.tandfonline.com/doi/full/10.1080/19490976.2022.2096993" target="_blank" rel="noopener noreferrer">
-                    The Mini Colon Model: a benchtop multi-bioreactor system to investigate the gut microbiome. <em>Gut Microbes</em>, 2022.
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <section id="research">
+    <section id="research" style="background-color: var(--light-gray);">
         <div class="container">
-            <h2>Research</h2>
-            <p>My research focuses on the intersection of engineering and human health.</p>
-            
-            <h3>Current Research</h3>
-            <p>I am currently a PhD Candidate at the University of Washington, developing novel control schemes for wearable assistive devices with Dr. Kim Ingraham. My work focuses on the design and control of exoskeletons and prostheses for rehabilitation and human augmentation.</p>
-            <div class="research-image">
-                [NOTE TO USER: Insert an image related to your exoskeleton research here, e.g., a diagram, a lab photo, or a data visualization.]
-            </div>
-            
-            <h3>Past Projects</h3>
-            <p>During my Master's at McGill University, I developed the Mini Colon Model (MiCoMo), a benchtop multi-bioreactor system to investigate the gut microbiome. As a Research Assistant at Polytechnique Montréal, I worked on biomechanics and exoskeletons, including modeling the dynamics of the human lower limb with exoskeletons and simulating control strategies.</p>
-            <div class="research-image">
-                [NOTE TO USER: Insert an image related to the MiCoMo project here.]
+            <h2>Research Experience</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <span class="role-tag">Current • Ingraham Lab (UW)</span>
+                    <h3>Human-Exoskeleton Co-adaptation</h3>
+                    <p>Investigating how humans interact with assistive devices in the context of locomotion biomechanics.</p>
+                    <ul>
+                        <li>Modeling interactions using a game theory paradigm.</li>
+                        <li>Developing adaptive control schemes for lower-limb exoskeletons to minimize metabolic cost.</li>
+                        <li>Quantifying human adaptation to novel split-belt walking conditions.</li>
+                    </ul>
+                </div>
+
+                <div class="research-card">
+                    <span class="role-tag">2022-2023 • CoSIM (Polytechnique Montréal)</span>
+                    <h3>Exoskeleton Dynamics & Control</h3>
+                    <p>Research Assistant focusing on biomechanics and sliding mode controllers.</p>
+                    <ul>
+                        <li>Modeled dynamics of human lower limbs wearing 1-DOF knee and 3-DOF lower limb exoskeletons.</li>
+                        <li>Simulated control strategies implementing non-linear disturbance observers for joint torque.</li>
+                    </ul>
+                </div>
+
+                <div class="research-card">
+                    <span class="role-tag">2019-2022 • Micro & Nano Lab (McGill)</span>
+                    <h3>Mini Colon Model (MiCoMo)</h3>
+                    <p>Master's thesis project developing in vitro artificial colon simulators.</p>
+                    <ul>
+                        <li>Developed a low-cost, high-throughput bioreactor system mimicking the GI microbial environment.</li>
+                        <li>Programmed microcontrollers for automatic control of anaerobic conditions, pH, and temperature.</li>
+                        <li>Validated device efficacy via 16S rRNA sequencing.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="teaching">
+    <section id="publications">
         <div class="container">
-            <h2>Teaching & Mentoring</h2>
-            <p>[NOTE TO USER: Please add any teaching assistant, mentoring, or guest lecture experiences here.]</p>
+            <h2>Selected Publications</h2>
+            
+            <div class="pub-item">
+                <a href="https://www.biorxiv.org/content/10.1101/2025.08.25.671956v1.full.pdf" target="_blank" class="pub-title">
+                    Quantifying human adaptation to a novel split-belt walking condition after broad experience at different belt speeds
+                </a>
+                <div class="pub-meta">
+                    <strong>Z. Jin</strong>, J. Isa, S.A. Burden, K.A. Ingraham. <em>bioRxiv Preprint</em>, 2025.
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <a href="https://arxiv.org/abs/2301.04051" target="_blank" class="pub-title">
+                    Co-Enrichment of Proteins in Extracellular Vesicles
+                </a>
+                <div class="pub-meta">
+                    M.L. Shen, A. Wallucks, <strong>Z. Jin</strong>, et al. <em>arXiv Preprint</em>, 2023.
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <a href="https://doi.org/10.1080/19490976.2022.2096993" target="_blank" class="pub-title">
+                    The Mini Colon Model: a benchtop multi-bioreactor system to investigate the gut microbiome
+                </a>
+                <div class="pub-meta">
+                    <strong>Z. Jin</strong>, A. Ng, C.F. Maurice, D. Juncker. <em>Gut Microbes</em>, 2022.
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <a href="https://www.nature.com/articles/s41586-022-04683-4" target="_blank" class="pub-title">
+                    Microfluidic chain reaction of structurally programmed capillary flow events
+                </a>
+                <div class="pub-meta">
+                    M. Yafia, O. Ymbern, ... <strong>Z. Jin</strong>, et al. <em>Nature</em>, 2022.
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h4>Presentations</h4>
+                <ul style="color: var(--text-light); font-size: 0.9rem; margin-top: 10px; padding-left: 20px;">
+                    <li><strong>Poster:</strong> Influencing human gait mechanics with adaptive split-belt treadmill. <em>ASB 2024 & NWBS 2024</em>.</li>
+                    <li><strong>Oral:</strong> MiCoMo: a miniature multi-bioreactor system. <em>8th World Congress on Targeting Microbiota, 2021</em>.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="teaching" style="background-color: var(--light-gray);">
+        <div class="container">
+            <h2>Teaching & Service</h2>
+            <ul class="simple-list">
+                <li>
+                    <span class="list-header">Future Faculty Preparation Program (F2P2) Committee Member</span>
+                    <span class="list-sub">UW ECE • Sep 2025 - Present</span>
+                    <p style="font-size: 0.9rem; color: #4a5568; margin-top: 5px;">Organizing workshops and panels to support PhD students aspiring for academic careers.</p>
+                </li>
+                <li>
+                    <span class="list-header">Teaching Assistant: Intro to Micro and Nano-Bioengineering (BMDE 508)</span>
+                    <span class="list-sub">McGill University • Fall 2020</span>
+                </li>
+                <li>
+                    <span class="list-header">Grader: Biomedical Instrumentation (BMDE 503)</span>
+                    <span class="list-sub">McGill University • Fall 2021</span>
+                </li>
+                <li>
+                    <span class="list-header">Class Mentor: Biochemical Engineering (CHEE 474)</span>
+                    <span class="list-sub">McGill University • Fall 2018</span>
+                </li>
+            </ul>
         </div>
     </section>
 
     <section id="awards">
         <div class="container">
             <h2>Awards & Honors</h2>
-            <p>[NOTE TO USER: Please list your academic awards, scholarships, and honors here.]</p>
-        </div>
-    </section>
-
-    <section id="news">
-        <div class="container">
-            <h2>News & Updates</h2>
-            <p>[NOTE TO USER: You can add recent updates, such as conference presentations, new , or other news here.]</p>
-        </div>
-    </section>
-
-    <section id="cv">
-        <div class="container">
-            <h2>CV</h2>
-            <p>[NOTE TO USER: My CV is currently being updated. A link to the PDF will be available here soon.]</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <ul class="simple-list">
+                    <li>
+                        <span class="list-header">BBME Excellence Award</span>
+                        <span class="list-sub">McGill University, 2019-2021</span>
+                    </li>
+                    <li>
+                        <span class="list-header">Louis C Ho Scholarship in Engineering</span>
+                        <span class="list-sub">2018-2019</span>
+                    </li>
+                </ul>
+                <ul class="simple-list">
+                    <li>
+                        <span class="list-header">Tomlinson Engagement Award for Mentoring</span>
+                        <span class="list-sub">2018</span>
+                    </li>
+                    <li>
+                        <span class="list-header">Dean's Honours List</span>
+                        <span class="list-sub">2015, 2016, 2018</span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </section>
 
     <section id="contact">
-        <div class="container">
-            <h2>Contact</h2>
-            <p>Zijie Jin<br>
-            PhD Candidate, Electrical Engineering<br>
-            University of Washington<br>
-            Seattle, WA<br>
-            [NOTE TO USER: Please add your professional email address here.]</p>
+        <div class="container contact-section">
+            <h2>Get in Touch</h2>
+            <p>I am always open to discussing research collaborations, biomechanics, or control systems.</p>
             
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/zijie-jin-89195b112/" target="_blank" title="LinkedIn">
-                    <i class="fab fa-linkedin">LinkedIn</i>
+                <a href="mailto:zijiejin@uw.edu">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
                 </a>
-                <a href="https://scholar.google.ca/citations?user=6JpY-CEAAAAJ&hl=en" target="_blank" title="Google Scholar">
-                    <i class="fas fa-graduation-cap">Google Scholar</i>
+                <a href="https://www.linkedin.com/in/zijie-jin-89195b112/" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
                 </a>
-                <a href="https://github.com/focussash" target="_blank" title="GitHub">
-                    <i class="fab fa-github">GitHub</i>
+                <a href="https://scholar.google.ca/citations?user=6JpY-CEAAAAJ&hl=en" target="_blank">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Scholar</span>
+                </a>
+                <a href="https://github.com/focussash" target="_blank">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
                 </a>
             </div>
         </div>
@@ -373,55 +539,40 @@
 
     <footer>
         <div class="container">
-            <p>&copy; <span id="current-year"></span> Zijie Jin. All rights reserved.</p>
+            <p>&copy; <span id="current-year"></span> Zijie Jin. Built with simple HTML/CSS.</p>
         </div>
     </footer>
 
     <script>
-        // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
-        // Mobile menu toggle
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
         });
         
-        // Close mobile menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
             });
         });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Highlight active section in navigation
+
+        // Highlight active section
         window.addEventListener('scroll', () => {
             let current = '';
             const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-links a');
             
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                if (pageYOffset >= (sectionTop - 150)) {
                     current = section.getAttribute('id');
                 }
             });
             
-            document.querySelectorAll('.nav-links a').forEach(link => {
+            navItems.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href').substring(1) === current) {
                     link.classList.add('active');
