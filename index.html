@@ -123,6 +123,31 @@
             text-align: center;
         }
 
+        .pet-caption {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 18px;
+        }
+
+        .greet {
+            display: inline-block;
+            transition: opacity 0.35s ease;
+        }
+        .greet.fade { opacity: 0; }
+
+        .off-clock {
+            margin-top: 18px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        .off-clock a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 6px;
+        }
+        .off-clock a:hover { text-decoration: underline; }
+
         /* Education List */
         .edu-item {
             margin-bottom: 15px;
@@ -304,7 +329,7 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-text">
-                    <h1>Hi, I'm Zijie Jin 金子捷.</h1>
+                    <h1><span id="greet" class="greet">Hi</span>, I'm Zijie Jin 金子捷.</h1>
                     <p style="font-size: 1.2rem; color: var(--primary-color); margin-top: 0.5rem;">
                         PhD Student in Electrical & Computer Engineering
                     </p>
@@ -342,7 +367,8 @@
                 </div>
 
                 <div class="profile-card">
-                    <img src="zhuzhu.png" alt="baobao" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
+                    <img src="zhuzhu.png" alt="猪猪, Zijie's cat" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 auto 8px; display: block;">
+                    <p class="pet-caption">Not me. This is 猪猪, my 12-year-old daughter.</p>
                     <a href="mailto:zijiejin@uw.edu" style="display: block; color: var(--text-color); text-decoration: none; margin-bottom: 10px;">
                         <i class="fas fa-envelope"></i> zijiejin@uw.edu
                     </a>
@@ -534,11 +560,30 @@
     <footer>
         <div class="container">
             <p>&copy; <span id="current-year"></span> Zijie Jin. Built with simple HTML/CSS.</p>
+            <p class="off-clock">Off the clock:
+                <a href="fishing.html">Fish Log</a>·<a href="kitchen.html">Kitchen</a>·<a href="side-quests.html">Side Quests</a>
+            </p>
         </div>
     </footer>
 
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Rotating greeting: English / 中文 / Français
+        (() => {
+            const greetings = ['Hi', '你好', 'Salut'];
+            const el = document.getElementById('greet');
+            if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            let i = 0;
+            setInterval(() => {
+                el.classList.add('fade');
+                setTimeout(() => {
+                    i = (i + 1) % greetings.length;
+                    el.textContent = greetings[i];
+                    el.classList.remove('fade');
+                }, 350);
+            }, 2800);
+        })();
         
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
