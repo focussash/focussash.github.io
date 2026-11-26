@@ -1,0 +1,92 @@
+/* Shared styles for the "off the clock" pages (fishing, kitchen, side quests).
+   Same palette as index.html so everything reads as one site. */
+:root {
+    --primary-color: #2c5282;
+    --secondary-color: #4299e1;
+    --text-color: #2d3748;
+    --text-light: #718096;
+    --bg-color: #ffffff;
+    --light-gray: #f7fafc;
+    --border-color: #e2e8f0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; min-width: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--bg-color);
+    overflow-x: clip;
+}
+
+.container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+/* Top bar */
+.topbar { border-bottom: 1px solid var(--border-color); }
+.topbar nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; gap: 16px; flex-wrap: wrap; }
+.topbar .home { font-weight: 700; font-size: 1.15rem; color: var(--primary-color); text-decoration: none; }
+.topbar .pages { display: flex; gap: 22px; list-style: none; flex-wrap: wrap; }
+.topbar .pages a { color: var(--text-color); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
+.topbar .pages a:hover, .topbar .pages a[aria-current="page"] { color: var(--primary-color); }
+
+/* Page header */
+.page-head { padding: 56px 0 28px; }
+.page-head h1 { font-size: clamp(2rem, 5vw, 2.6rem); line-height: 1.1; margin-bottom: 10px; }
+.page-head .lede { color: #4a5568; max-width: 640px; font-size: 1.05rem; }
+.page-head .stat { margin-top: 14px; color: var(--primary-color); font-weight: 600; }
+
+/* Filter chips */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 28px; }
+.chip {
+    font: inherit; font-size: 0.9rem; cursor: pointer;
+    padding: 8px 16px; min-height: 40px; border-radius: 999px;
+    border: 1px solid var(--border-color); background: #fff; color: var(--text-color);
+}
+.chip:hover { border-color: var(--primary-color); }
+.chip[aria-pressed="true"] { background: var(--primary-color); border-color: var(--primary-color); color: #fff; }
+.chip:focus-visible { outline: 2px solid var(--secondary-color); outline-offset: 2px; }
+
+/* Card grid */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 22px; padding-bottom: 64px; }
+
+.card {
+    border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden;
+    background: #fff; display: flex; flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.06); border-color: var(--primary-color); }
+
+.photo { aspect-ratio: 4 / 3; background: var(--light-gray); position: relative; overflow: hidden; }
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo .ph {
+    position: absolute; inset: 0; display: grid; place-items: center;
+    color: #a0aec0; font-size: 0.85rem; text-align: center; padding: 12px;
+}
+.photo .ph svg { width: 64px; height: 64px; display: block; margin: 0 auto 6px; opacity: 0.55; }
+
+.body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.body h3 { font-size: 1.1rem; color: var(--primary-color); line-height: 1.3; }
+.body .alt { font-size: 0.9rem; color: var(--text-light); }
+.body .sci { font-style: italic; }
+.body .meta { font-size: 0.85rem; color: var(--text-light); margin-top: 6px; }
+.body .note { font-size: 0.95rem; color: #4a5568; margin-top: 8px; }
+
+.tag {
+    display: inline-block; align-self: flex-start; font-size: 0.72rem; font-weight: 600;
+    padding: 3px 8px; border-radius: 4px; background: var(--light-gray); color: var(--text-light);
+    margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.02em;
+}
+.tag.active { background: #e6fffa; color: #2c7a7b; }
+.tag.hold { background: #fffaf0; color: #b7791f; }
+
+.links { margin-top: auto; padding-top: 12px; display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.9rem; }
+.links a { color: var(--primary-color); text-decoration: none; font-weight: 500; }
+.links a:hover { text-decoration: underline; }
+.links .todo { color: #a0aec0; }
+
+.empty { color: var(--text-light); padding: 30px 0 60px; }
+
+footer { text-align: center; padding: 32px 0; color: var(--text-light); font-size: 0.9rem; border-top: 1px solid var(--border-color); }
+
+@media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }

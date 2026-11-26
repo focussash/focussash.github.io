@@ -123,6 +123,31 @@
             text-align: center;
         }
 
+        .pet-caption {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 18px;
+        }
+
+        .greet {
+            display: inline-block;
+            transition: opacity 0.35s ease;
+        }
+        .greet.fade { opacity: 0; }
+
+        .off-clock {
+            margin-top: 18px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        .off-clock a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 6px;
+        }
+        .off-clock a:hover { text-decoration: underline; }
+
         /* Education List */
         .edu-item {
             margin-bottom: 15px;
@@ -200,6 +225,65 @@
         
         .research-card li {
             margin-bottom: 8px;
+        }
+
+        /* Current project: full width, more weight */
+        .research-current {
+            padding: 32px 36px;
+        }
+        .research-current h3 {
+            font-size: 1.5rem;
+        }
+        .research-current ul {
+            list-style-position: outside;
+            padding-left: 1.2em;
+        }
+        .research-current li {
+            margin-bottom: 10px;
+            padding-left: 4px;
+        }
+        .role-current {
+            background: var(--primary-color);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Past projects: compact, quieter timeline */
+        .previously {
+            margin: 45px 0 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+        }
+        .past-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 20px;
+            padding: 16px 0;
+            border-top: 1px solid var(--border-color);
+        }
+        .past-when {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        .past-title {
+            font-weight: 600;
+        }
+        .past-where {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+        }
+        .past-item p {
+            color: #4a5568;
+            font-size: 0.92rem;
+        }
+        @media (max-width: 600px) {
+            .past-item { grid-template-columns: 1fr; gap: 4px; }
+            .research-current { padding: 24px 20px; }
         }
 
         /* Teaching & Awards Lists */
@@ -304,15 +388,15 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-text">
-                    <h1>Hi, I'm Zijie Jin 金子捷.</h1>
+                    <h1><span id="greet" class="greet">Hi</span>, I'm Zijie Jin 金子捷.</h1>
                     <p style="font-size: 1.2rem; color: var(--primary-color); margin-top: 0.5rem;">
                         PhD Student in Electrical & Computer Engineering
                     </p>
                     <p>
-                        I am a researcher at the <strong>University of Washington</strong>, advised by <a href="https://kim-ingraham.com/" target="_blank" style="color:var(--primary-color)">Dr. Kimberly Ingraham</a>. My work operates at the intersection of engineering and human health, utilizing game theory paradigms to investigate how humans interact and co-adapt with assistive wearable devices.
+                        I am a researcher at the <strong>University of Washington</strong>, advised by <a href="https://kim-ingraham.com/" target="_blank" style="color:var(--primary-color)">Dr. Kimberly Ingraham</a>, and work in close collaboration with <a href="https://faculty.washington.edu/sburden/" target="_blank" style="color:var(--primary-color)">Dr. Sam Burden</a> and <a href="https://www.jasontisa.com/" target="_blank" style="color:var(--primary-color)">Jason Isa</a>. My work operates at the intersection of engineering and human health, utilizing game theory paradigms to investigate how humans interact and co-adapt with assistive wearable devices.
                     </p>
                     <p>
-                        My background spans Chemical, Biological, and Biomedical Engineering. Previously, I worked on microbiome bioreactors (among other things) at McGill University with <a href="https://junckerlab.org/" target="_blank" style="color:var(--primary-color)">Dr. David Juncker</a> and <a href="http://www.mauricelab.ca/" target="_blank" style="color:var(--primary-color)">Dr. Corinne Maurice</a>, and exoskeleton dynamics at Polytechnique Montréal. I am driven by the design and control of systems that augment human capability.
+                        My background spans Chemical, Biological, and Biomedical Engineering. Previously, I worked on microbiome bioreactors (among other things) at McGill University with <a href="https://junckerlab.org/" target="_blank" style="color:var(--primary-color)">Dr. David Juncker</a> and <a href="http://www.mauricelab.ca/" target="_blank" style="color:var(--primary-color)">Dr. Corinne Maurice</a>, and exoskeleton dynamics at Polytechnique Montréal with <a href="https://www.polymtl.ca/expertises/en/achiche-sofiane" target="_blank" style="color:var(--primary-color)">Dr. Sofiane Achiche</a>. I am driven by the design and control of systems that augment human capability.
                     </p>
                     
                     <h3 style="margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">Education</h3>
@@ -342,13 +426,19 @@
                 </div>
 
                 <div class="profile-card">
-                    <img src="zhuzhu.png" alt="baobao" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block;">
+                    <img src="zhuzhu.png" alt="猪猪, Zijie's cat" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 auto 8px; display: block;">
+                    <p class="pet-caption">Meet 猪猪, my 12-year-old daughter.</p>
                     <a href="mailto:zijiejin@uw.edu" style="display: block; color: var(--text-color); text-decoration: none; margin-bottom: 10px;">
                         <i class="fas fa-envelope"></i> zijiejin@uw.edu
                     </a>
-                    <a href="CV_Zijie_Jin_2025.pdf" class="btn" style="display: inline-block; padding: 8px 20px; background: var(--primary-color); color: white; border-radius: 5px; text-decoration: none; font-size: 0.9rem; margin-top: 10px;">
-                        Download CV
-                    </a>
+                    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 10px;">
+                        <a href="CV_Zijie_Jin.pdf" target="_blank" class="btn" style="display: inline-block; padding: 8px 20px; background: var(--primary-color); color: white; border-radius: 5px; text-decoration: none; font-size: 0.9rem;">
+                            Academic CV
+                        </a>
+                        <a href="Resume_Zijie_Jin.pdf" target="_blank" class="btn" style="display: inline-block; padding: 8px 20px; background: #fff; color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 5px; text-decoration: none; font-size: 0.9rem;">
+                            Resume
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -357,37 +447,37 @@
     <section id="research" style="background-color: var(--light-gray);">
         <div class="container">
             <h2>Research Experience</h2>
-            <div class="research-grid">
-                <div class="research-card">
-                    <span class="role-tag">Current • Ingraham Lab (UW)</span>
-                    <h3>Human-Exoskeleton Co-adaptation</h3>
-                    <p>Investigating how humans interact with assistive devices in the context of locomotion biomechanics.</p>
-                    <ul>
-                        <li>Modeling interactions using a game theory paradigm.</li>
-                        <li>Developing adaptive control schemes for lower-limb exoskeletons to minimize metabolic cost.</li>
-                        <li>Quantifying human adaptation to novel split-belt walking conditions.</li>
-                    </ul>
-                </div>
+            <div class="research-card research-current">
+                <span class="role-tag role-current">Current • Ingraham Lab (UW) • 2023 – Present</span>
+                <h3>Human-Exoskeleton Co-adaptation</h3>
+                <p>Investigating how humans interact with assistive devices in the context of locomotion biomechanics.</p>
+                <ul>
+                    <li>Demonstrated, through a guided split-belt treadmill study, that human adaptation to energetic optimization does not reliably emerge even under protocols designed to induce it, motivating control methods that do not depend on externally imposing exploration (<a href="https://doi.org/10.1038/s41598-026-46937-5" target="_blank" style="color: var(--primary-color);"><em>Sci Rep</em>, 2026</a>).</li>
+                    <li>Built a hip-exoskeleton testbed from a collaborator's design, including fabrication, assembly, power/CAN circuitry, embedded firmware, and the real-time torque-control pipeline.</li>
+                    <li>Maintaining the lab's fork of the OpenExo ankle exoskeleton firmware and actively collaborating with the OpenExo team to update and troubleshoot the device.</li>
+                    <li>Developing individualized control strategies for lower-limb exoskeletons to augment unimpaired locomotion for various cost objectives, including energy optimization and preference.</li>
+                    <li>Implemented previously published biomechanical methods, including human-in-the-loop optimization (HiLO) using both CMA-ES and Bayesian Optimization (BO) as the backend optimizer, and a self-paced treadmill that auto-tracks human walking speed using force plates.</li>
+                    <li>Co-developing a game-theoretic optimization method that converges to a user's latent cost optimum by probing their observable behavior (e.g., self-selected speed on a self-paced treadmill), without measuring metabolic cost in the loop as conventional human-in-the-loop optimization requires, to be deployed in both hip and ankle exoskeletons (manuscript in preparation).</li>
+                </ul>
+            </div>
 
-                <div class="research-card">
-                    <span class="role-tag">2022-2023 • CoSIM (Polytechnique Montréal)</span>
-                    <h3>Exoskeleton Dynamics & Control</h3>
-                    <p>Research Assistant focusing on biomechanics and sliding mode controllers.</p>
-                    <ul>
-                        <li>Modeled dynamics of human lower limbs wearing 1-DOF knee and 3-DOF lower limb exoskeletons.</li>
-                        <li>Simulated control strategies implementing non-linear disturbance observers for joint torque.</li>
-                    </ul>
+            <h4 class="previously">Previously</h4>
+            <div class="past-list">
+                <div class="past-item">
+                    <div class="past-when">2022 – 2023</div>
+                    <div>
+                        <div class="past-title">Exoskeleton Dynamics & Control</div>
+                        <div class="past-where">Research Assistant, CoSIM, Polytechnique Montréal, with <a href="https://www.polymtl.ca/expertises/en/achiche-sofiane" target="_blank" style="color:var(--primary-color)">Dr. Sofiane Achiche</a></div>
+                        <p>Modeled the dynamics of human lower limbs wearing 1-DOF knee and 3-DOF lower-limb exoskeletons, and simulated sliding mode controllers with non-linear disturbance observers for joint torque.</p>
+                    </div>
                 </div>
-
-                <div class="research-card">
-                    <span class="role-tag">2019-2022 • Micro & Nano Lab (McGill)</span>
-                    <h3>Mini Colon Model (MiCoMo)</h3>
-                    <p>Master's thesis project developing in vitro artificial colon simulators.</p>
-                    <ul>
-                        <li>Developed a low-cost, high-throughput bioreactor system mimicking the GI microbial environment.</li>
-                        <li>Programmed microcontrollers for automatic control of anaerobic conditions, pH, and temperature.</li>
-                        <li>Validated device efficacy via 16S rRNA sequencing.</li>
-                    </ul>
+                <div class="past-item">
+                    <div class="past-when">2019 – 2022</div>
+                    <div>
+                        <div class="past-title">Mini Colon Model (MiCoMo)</div>
+                        <div class="past-where">Master's thesis, Micro & Nano Bioengineering Lab, McGill University, with <a href="https://junckerlab.org/" target="_blank" style="color:var(--primary-color)">Dr. David Juncker</a> and <a href="http://www.mauricelab.ca/" target="_blank" style="color:var(--primary-color)">Dr. Corinne Maurice</a></div>
+                        <p>Built a low-cost, high-throughput bioreactor system mimicking the GI microbial environment, with microcontroller control of anaerobic conditions, pH and temperature, validated by 16S rRNA sequencing.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -398,20 +488,20 @@
             <h2>Selected Publications</h2>
             
             <div class="pub-item">
-                <a href="https://www.biorxiv.org/content/10.1101/2025.08.25.671956v1.full.pdf" target="_blank" class="pub-title">
+                <a href="https://doi.org/10.1038/s41598-026-46937-5" target="_blank" class="pub-title">
                     Quantifying human adaptation to a novel split-belt walking condition after broad experience at different belt speeds
                 </a>
                 <div class="pub-meta">
-                    <strong>Z. Jin</strong>, J. Isa, S.A. Burden, K.A. Ingraham. <em>bioRxiv Preprint</em>, 2025.
+                    <strong>Z. Jin</strong>, J. Isa, S.A. Burden, K.A. Ingraham. <em>Scientific Reports</em> 16, 15627, 2026.
                 </div>
             </div>
 
             <div class="pub-item">
-                <a href="https://arxiv.org/abs/2301.04051" target="_blank" class="pub-title">
-                    Co-Enrichment of Proteins in Extracellular Vesicles
+                <a href="https://www.nature.com/articles/s41467-026-73837-z" target="_blank" class="pub-title">
+                    Co-enrichment of proteins in extracellular vesicles
                 </a>
                 <div class="pub-meta">
-                    M.L. Shen, A. Wallucks, <strong>Z. Jin</strong>, et al. <em>arXiv Preprint</em>, 2023.
+                    M.L. Shen, A. Wallucks, R. Martel, <strong>Z. Jin</strong>, et al. <em>Nature Communications</em> 17, 7181, 2026.
                 </div>
             </div>
 
@@ -436,6 +526,7 @@
             <div style="margin-top: 30px;">
                 <h4>Presentations</h4>
                 <ul style="color: var(--text-light); font-size: 0.9rem; margin-top: 10px; padding-left: 20px;">
+                    <li><strong>Oral:</strong> Can a Machine learn to help without knowing the Human's objective? Action-Only Adaptation for Exoskeleton Assistance. <em>Dynamic Walking, 2026</em>.</li>
                     <li><strong>Poster:</strong> Influencing human gait mechanics with adaptive split-belt treadmill. <em>ASB 2024 & NWBS 2024</em>.</li>
                     <li><strong>Oral:</strong> MiCoMo: a miniature multi-bioreactor system. <em>8th World Congress on Targeting Microbiota, 2021</em>.</li>
                 </ul>
@@ -451,6 +542,10 @@
                     <span class="list-header">Future Faculty Preparation Program (F2P2) Committee Member</span>
                     <span class="list-sub">UW ECE • Sep 2025 - Present</span>
                     <p style="font-size: 0.9rem; color: #4a5568; margin-top: 5px;">Organizing workshops and panels to support PhD students aspiring for academic careers.</p>
+                </li>
+                <li>
+                    <span class="list-header">MS Admission Triage Committee Member</span>
+                    <span class="list-sub">UW ECE • 2025, 2026</span>
                 </li>
                 <li>
                     <span class="list-header">Teaching Assistant: Intro to Micro and Nano-Bioengineering (BMDE 508)</span>
@@ -524,11 +619,30 @@
     <footer>
         <div class="container">
             <p>&copy; <span id="current-year"></span> Zijie Jin. Built with simple HTML/CSS.</p>
+            <p class="off-clock">Off the clock:
+                <a href="fishing.html">Fish Log</a>·<a href="kitchen.html">Kitchen</a>·<a href="side-quests.html">Side Quests</a>
+            </p>
         </div>
     </footer>
 
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Rotating greeting: English / 中文 / Français
+        (() => {
+            const greetings = ['Hi', '你好', 'Salut'];
+            const el = document.getElementById('greet');
+            if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            let i = 0;
+            setInterval(() => {
+                el.classList.add('fade');
+                setTimeout(() => {
+                    i = (i + 1) % greetings.length;
+                    el.textContent = greetings[i];
+                    el.classList.remove('fade');
+                }, 350);
+            }, 2800);
+        })();
         
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');

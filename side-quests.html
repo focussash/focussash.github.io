@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Quests · Zijie Jin</title>
+    <meta name="description" content="Things Zijie Jin builds outside the lab.">
+    <link rel="stylesheet" href="extras.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="container">
+            <nav>
+                <a class="home" href="index.html">← Zijie Jin</a>
+                <ul class="pages">
+                    <li><a href="fishing.html">Fish Log</a></li>
+                    <li><a href="kitchen.html">Kitchen</a></li>
+                    <li><a href="side-quests.html" aria-current="page">Side Quests</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-head">
+            <h1>Side Quests</h1>
+            <p class="lede">Things I build outside the lab, usually because nothing off the shelf works the way I want.</p>
+        </section>
+
+        <div class="grid" id="grid"></div>
+    </main>
+
+    <footer><div class="container">© <span id="year"></span> Zijie Jin</div></footer>
+
+<script>
+{
+    /* ===== EDIT HERE =====
+       status: 'active' | 'hold' | 'done'. Leave repo/demo empty to show "link coming".
+       Optional photo: put it in photos/quests/ and set `photo` to the file name. */
+    const QUESTS = [
+        {
+            title: 'Archery assist',
+            stack: 'M5Stick · IMU · phone camera',
+            status: 'active',
+            text: 'A wearable that buzzes during the draw, for traditional Chinese archery (Han bow, thumb ring), where nothing can be mounted on the bow. Next up: a single side camera on a phone for post-shot follow-through feedback.',
+            repo: '', demo: '', photo: '',
+        },
+        {
+            title: '你画我猜 (draw & guess)',
+            stack: 'Web app',
+            status: 'active',
+            text: 'A Pictionary game for friends and family split between China and the US, written because no existing one had the small rules exactly the way I wanted.',
+            repo: '', demo: '', photo: '',
+        },
+        {
+            title: '小智 home voice assistant',
+            stack: 'ESP32-S3-BOX-3 · self-hosted xiaozhi server',
+            status: 'active',
+            text: 'A Chinese-language, wake-word voice assistant running on my own server. Anything it can’t handle gets escalated to a stronger model with “好的，我去请示首长”.',
+            repo: '', demo: '', photo: '',
+        },
+        {
+            title: 'OnePetri for Android',
+            stack: 'Flutter/Dart · TensorFlow Lite',
+            status: 'done',
+            text: 'Ported an iOS computer-vision app (with the original author’s permission) to Android: on-device petri-dish detection and plaque counting.',
+            repo: '', demo: '', photo: '',
+        },
+    ];
+
+    const LABEL = { active: 'in progress', hold: 'on hold', done: 'done' };
+
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    const link = (url, text) => url
+        ? `<a href="${esc(url)}" target="_blank" rel="noopener">${text}</a>`
+        : '';
+
+    const card = q => `
+        <article class="card">
+            ${q.photo ? `<div class="photo"><img src="photos/quests/${esc(q.photo)}" alt="${esc(q.title)}" loading="lazy"></div>` : ''}
+            <div class="body">
+                <span class="tag ${q.status === 'done' ? '' : esc(q.status)}">${esc(LABEL[q.status] || q.status)}</span>
+                <h3>${esc(q.title)}</h3>
+                <div class="alt">${esc(q.stack)}</div>
+                <p class="note">${esc(q.text)}</p>
+                <div class="links">
+                    ${link(q.repo, 'GitHub →')}${link(q.demo, 'Demo →')}
+                    ${!q.repo && !q.demo ? '<span class="todo">link coming</span>' : ''}
+                </div>
+            </div>
+        </article>`;
+
+    document.getElementById('grid').innerHTML = QUESTS.map(card).join('');
+    document.getElementById('year').textContent = new Date().getFullYear();
+}
+</script>
+</body>
+</html>

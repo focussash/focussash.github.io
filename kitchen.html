@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen · Zijie Jin</title>
+    <meta name="description" content="Dishes Zijie Jin has cooked: mostly Chinese, some Japanese.">
+    <link rel="stylesheet" href="extras.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="container">
+            <nav>
+                <a class="home" href="index.html">← Zijie Jin</a>
+                <ul class="pages">
+                    <li><a href="fishing.html">Fish Log</a></li>
+                    <li><a href="kitchen.html" aria-current="page">Kitchen</a></li>
+                    <li><a href="side-quests.html">Side Quests</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-head">
+            <h1>Kitchen</h1>
+            <p class="lede">Mostly traditional Chinese, some Japanese. When friends come over I stay in the kitchen and send dishes out one at a time.</p>
+        </section>
+
+        <div class="chips" id="chips" role="group" aria-label="Filter by cuisine"></div>
+        <div class="grid" id="grid"></div>
+    </main>
+
+    <footer><div class="container">© <span id="year"></span> Zijie Jin</div></footer>
+
+<script>
+{
+    /* ===== EDIT HERE =====
+       One object per dish. Put photos in photos/kitchen/ and set `photo` to the file name.
+       Fields: zh, en, cuisine (used for the filter chips), photo, note. */
+    const DISHES = [
+        { zh: '茄饼', en: 'Nanjing-style eggplant fritters', cuisine: 'Chinese', photo: '', note: 'My dish for 中元. Shredded, squeezed dry, fried as a patty, and plated with a river lantern.' },
+        { zh: '回锅肉', en: 'Twice-cooked pork', cuisine: 'Chinese', photo: '', note: 'Made with pork belly here, since 二刀肉 isn’t sold in the US.' },
+        { zh: '红烧排骨', en: 'Red-braised pork ribs', cuisine: 'Chinese', photo: '', note: 'I pick the cuts with the most cartilage.' },
+        { zh: '桂花糖藕', en: 'Osmanthus sweet lotus root', cuisine: 'Chinese', photo: '', note: 'Made it once. Never again.' },
+        { zh: '青花鱼 なめろう / たたき', en: 'Saba namerō & tataki', cuisine: 'Japanese', photo: '', note: 'Sashimi-grade mackerel, made more times than I can count.' },
+        { zh: '金枪鱼赤身たたき', en: 'Seared tuna akami tataki', cuisine: 'Japanese', photo: '', note: 'Reserved for guests.' },
+    ];
+
+    const BOWL_SVG = '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 30h48c0 12-10 22-24 22S8 42 8 30z"/><path d="M22 52h20"/><path d="M38 24L54 8M44 24L58 12"/></svg>';
+
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    const photo = d => d.photo
+        ? `<img src="photos/kitchen/${esc(d.photo)}" alt="${esc(d.en)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'photo missing'}))">`
+        : `<div class="ph"><div>${BOWL_SVG}photo coming</div></div>`;
+
+    const card = d => `
+        <article class="card">
+            <div class="photo">${photo(d)}</div>
+            <div class="body">
+                <span class="tag">${esc(d.cuisine)}</span>
+                <h3>${esc(d.zh)}</h3>
+                <div class="alt">${esc(d.en)}</div>
+                ${d.note ? `<p class="note">${esc(d.note)}</p>` : ''}
+            </div>
+        </article>`;
+
+    const cuisines = ['All', ...new Set(DISHES.map(d => d.cuisine).filter(Boolean))];
+    const chips = document.getElementById('chips');
+    const grid = document.getElementById('grid');
+    let current = 'All';
+
+    const render = () => {
+        const shown = current === 'All' ? DISHES : DISHES.filter(d => d.cuisine === current);
+        grid.innerHTML = shown.length ? shown.map(card).join('') : '<p class="empty">Nothing here yet.</p>';
+        chips.innerHTML = cuisines.map(c => `<button class="chip" aria-pressed="${c === current}" data-c="${esc(c)}">${esc(c)}</button>`).join('');
+    };
+
+    chips.addEventListener('click', e => {
+        const b = e.target.closest('.chip');
+        if (!b) return;
+        current = b.dataset.c;
+        render();
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    render();
+}
+</script>
+</body>
+</html>
