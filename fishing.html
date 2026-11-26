@@ -24,7 +24,7 @@
     <main class="container">
         <section class="page-head">
             <h1>Fish Log</h1>
-            <p class="lede">Every species I've caught, starting on the St. Lawrence at Montréal's Old Port and continuing around Seattle. Mostly catch-and-release.</p>
+            <p class="lede">Every species I've caught, starting on the St. Lawrence in Montréal and continuing around Seattle. The big ones go back; some of the rest end up in the <a href="kitchen.html" style="color: var(--primary-color);">kitchen</a>.</p>
             <p class="stat" id="stat"></p>
         </section>
 
@@ -42,27 +42,39 @@
                spot, when, photo, note, released (true = catch-and-release).
        The entries marked sample: true are placeholders: replace or delete them. */
     const FISH = [
-        { en: 'Yellow Perch', zh: '黄鲈', sci: 'Perca flavescens', region: 'Montréal', spot: 'Old Port, St. Lawrence River', when: '', photo: '', note: '', released: true, sample: true },
-        { en: 'Smallmouth Bass', zh: '小口黑鲈', sci: 'Micropterus dolomieu', region: 'Montréal', spot: 'Old Port, St. Lawrence River', when: '', photo: '', note: '', released: true, sample: true },
-        { en: 'Pink Salmon', zh: '粉红鲑', sci: 'Oncorhynchus gorbuscha', region: 'Seattle', spot: '', when: '', photo: '', note: '', released: false, sample: true },
+        { en: 'Rainbow Trout', zh: '虹鳟', sci: 'Oncorhynchus mykiss', region: 'Washington', when: '2026-04', photo: 'rainbow-trout.jpg', note: '' },
+        { en: 'Pink Salmon', zh: '驼背大麻哈鱼', sci: 'Oncorhynchus gorbuscha', region: 'Washington', when: '2025-08', photo: 'pink-salmon.jpg', note: '' },
+        { en: 'Redhorse', zh: '亚口鱼', sci: 'Moxostoma sp.', region: 'Québec', when: '2021-05', photo: 'redhorse.jpg', note: '' },
+        { en: 'Lake Sturgeon', zh: '湖鲟', sci: 'Acipenser fulvescens', region: 'Québec', when: '2023-05', photo: 'lake-sturgeon.jpg', note: '' },
+        { en: 'Walleye', zh: '大眼梭鲈', sci: 'Sander vitreus', region: 'Québec', when: '2022-11', photo: 'walleye.jpg', note: '', pos: 'center 30%' },
+        { en: 'Yellow Perch', zh: '黄金鲈', sci: 'Perca flavescens', region: 'Québec', when: '2021-02', photo: 'yellow-perch.jpg', note: 'Through the ice.' },
+        { en: 'Squid', zh: '鱿鱼', sci: '', region: 'Washington', when: '2023-12', photo: 'squid.jpg', note: 'Not technically a fish.', pos: 'center 40%' },
+        { en: 'Rock Bass', zh: '岩鲈', sci: 'Ambloplites rupestris', region: 'Washington', when: '2024-05', photo: 'rock-bass.jpg', note: '' },
+        { en: 'Smallmouth Bass', zh: '小口黑鲈', sci: 'Micropterus dolomieu', region: 'Québec', when: '2023-08', photo: 'smallmouth-bass.jpg', note: '' },
+        { en: 'White Perch', zh: '白鲈', sci: 'Morone americana', region: 'Québec', when: '2023-03', photo: 'white-perch.jpg', note: 'Through the ice.', pos: 'center 35%' },
     ];
+
+    const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const fmtWhen = w => {
+        const m = /^(\d{4})-(\d{2})$/.exec(w || '');
+        return m ? `${MONTHS[+m[2] - 1]} ${m[1]}` : (w || '');
+    };
 
     const FISH_SVG = '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><path d="M6 32c8-12 22-16 34-12 6 2 10 6 12 12-2 6-6 10-12 12-12 4-26 0-34-12z"/><path d="M52 32l8-8v16z"/><circle cx="18" cy="29" r="2" fill="currentColor"/></svg>';
 
     const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
     const photo = f => f.photo
-        ? `<img src="photos/fish/${esc(f.photo)}" alt="${esc(f.en)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'photo missing'}))">`
+        ? `<img src="photos/fish/${esc(f.photo)}" alt="${esc(f.en)}" loading="lazy"${f.pos ? ` style="object-position:${esc(f.pos)}"` : ''} onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'photo missing'}))">`
         : `<div class="ph"><div>${FISH_SVG}photo coming</div></div>`;
 
     const card = f => `
         <article class="card">
             <div class="photo">${photo(f)}</div>
             <div class="body">
-                ${f.sample ? '<span class="tag hold">sample entry</span>' : ''}
                 <h3>${esc(f.en)}</h3>
                 <div class="alt">${esc(f.zh)}${f.zh && f.sci ? ' · ' : ''}<span class="sci">${esc(f.sci)}</span></div>
-                <div class="meta">${[f.spot || f.region, f.when, f.released ? 'released' : ''].filter(Boolean).map(esc).join(' · ')}</div>
+                <div class="meta">${[f.spot || f.region, fmtWhen(f.when), f.released ? 'released' : ''].filter(Boolean).map(esc).join(' · ')}</div>
                 ${f.note ? `<p class="note">${esc(f.note)}</p>` : ''}
             </div>
         </article>`;
