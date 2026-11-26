@@ -234,6 +234,14 @@
         .research-current h3 {
             font-size: 1.5rem;
         }
+        .research-current ul {
+            list-style-position: outside;
+            padding-left: 1.2em;
+        }
+        .research-current li {
+            margin-bottom: 10px;
+            padding-left: 4px;
+        }
         .role-current {
             background: var(--primary-color);
             color: #fff;
@@ -444,9 +452,12 @@
                 <h3>Human-Exoskeleton Co-adaptation</h3>
                 <p>Investigating how humans interact with assistive devices in the context of locomotion biomechanics.</p>
                 <ul>
-                    <li>Modeling interactions using a game theory paradigm.</li>
-                    <li>Developing adaptive control schemes for lower-limb exoskeletons to minimize metabolic cost.</li>
-                    <li>Quantifying human adaptation to novel split-belt walking conditions.</li>
+                    <li>Demonstrated, through a guided split-belt treadmill study, that human adaptation to energetic optimization does not reliably emerge even under protocols designed to induce it, motivating control methods that do not depend on externally imposing exploration (<a href="https://doi.org/10.1038/s41598-026-46937-5" target="_blank" style="color: var(--primary-color);"><em>Sci Rep</em>, 2026</a>).</li>
+                    <li>Built a hip-exoskeleton testbed from a collaborator's design, including fabrication, assembly, power/CAN circuitry, embedded firmware, and the real-time torque-control pipeline.</li>
+                    <li>Maintaining the lab's fork of the OpenExo ankle exoskeleton firmware and actively collaborating with the OpenExo team to update and troubleshoot the device.</li>
+                    <li>Developing individualized control strategies for lower-limb exoskeletons to augment unimpaired locomotion for various cost objectives, including energy optimization and preference.</li>
+                    <li>Implemented previously published biomechanical methods, including human-in-the-loop optimization (HiLO) using both CMA-ES and Bayesian Optimization (BO) as the backend optimizer, and a self-paced treadmill that auto-tracks human walking speed using force plates.</li>
+                    <li>Co-developing a game-theoretic optimization method that converges to a user's latent cost optimum by probing their observable behavior (e.g., self-selected speed on a self-paced treadmill), without measuring metabolic cost in the loop as conventional human-in-the-loop optimization requires, to be deployed in both hip and ankle exoskeletons (manuscript in preparation).</li>
                 </ul>
             </div>
 
